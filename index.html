@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Binary Professor | Official VIP Hub</title>
+    
+    <!-- Google Font: Outfit for Ultra-clean Modern UI -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1605517707410456');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1605517707410456&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <style>
+        /* === CORE RESET & FAST RENDERING === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background: radial-gradient(circle at 50% 10%, #0d1b2a 0%, #050811 100%);
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 24px 16px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Abstract ambient background glow */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(0, 208, 132, 0.15) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* === FLOATING QUOTEX & DOLLAR ELEMENTS === */
+        .floating-arena {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .floater {
+            position: absolute;
+            opacity: 0.22;
+            animation: floatAround 10s ease-in-out infinite alternate;
+        }
+
+        .f-1 { top: 7%; left: 6%; animation-duration: 9s; }
+        .f-2 { top: 14%; right: 7%; animation-duration: 11s; animation-delay: -2s; }
+        .f-3 { top: 48%; left: 4%; animation-duration: 12s; animation-delay: -4s; }
+        .f-4 { top: 55%; right: 5%; animation-duration: 10s; animation-delay: -1s; }
+        .f-5 { bottom: 12%; left: 8%; animation-duration: 13s; animation-delay: -3s; }
+        .f-6 { bottom: 16%; right: 8%; animation-duration: 8s; animation-delay: -5s; }
+
+        @keyframes floatAround {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-18px) rotate(8deg); }
+            100% { transform: translateY(10px) rotate(-8deg); }
+        }
+
+        .container {
+            max-width: 440px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            z-index: 1;
+        }
+
+        /* === PROFILE LOGO === */
+        .logo-wrapper {
+            position: relative;
+            margin-bottom: 16px;
+            animation: fadeInDown 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+        }
+
+        .logo-wrapper::after {
+            content: '';
+            position: absolute;
+            top: -4px; left: -4px; right: -4px; bottom: -4px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d084, #00b4d8);
+            z-index: -1;
+            filter: blur(10px);
+            opacity: 0.7;
+            animation: pulseGlow 3s ease-in-out infinite alternate;
+        }
+
+        .logo-img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #00d084;
+            background-color: #0d1b2a;
+            display: block;
+        }
+
+        /* === TITLES === */
+        .brand-title {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+            margin-bottom: 6px;
+            line-height: 1.2;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+
+        .brand-title span {
+            background: linear-gradient(90deg, #00d084, #48cae4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-badge {
+            display: inline-block;
+            background: rgba(0, 208, 132, 0.1);
+            border: 1px solid rgba(0, 208, 132, 0.3);
+            color: #00d084;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 22px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            animation: fadeIn 0.8s ease-out 0.3s both;
+        }
+
+        /* === CTA BUTTON (INSTANT TOP VISIBILITY) === */
+        .cta-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 340px;
+            padding: 18px 24px;
+            background: linear-gradient(90deg, #00d084, #0096c7);
+            background-size: 200% auto;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 800;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(0, 208, 132, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            animation: fadeInUp 0.8s ease-out 0.4s both, shimmer 3s infinite linear;
+            margin-bottom: 26px;
+        }
+
+        .cta-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* === GLASSMORPHISM PERKS BOX === */
+        .perks-box {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-radius: 20px;
+            padding: 22px 20px;
+            text-align: left;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 0.8s ease-out 0.5s both;
+            margin-bottom: 24px;
+        }
+
+        .perks-header {
+            font-size: 16px;
+            font-weight: 700;
+            color: #e2e8f0;
+            text-align: center;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            padding-bottom: 12px;
+            margin-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .perks-list {
+            list-style: none;
+        }
+
+        .perks-list li {
+            display: flex;
+            align-items: center;
+            font-size: 14.5px;
+            font-weight: 600;
+            color: #cbd5e1;
+            margin-bottom: 14px;
+            line-height: 1.4;
+        }
+
+        .perks-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .perks-list li .bullet-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(0, 208, 132, 0.12);
+            color: #00d084;
+            font-size: 14px;
+            margin-right: 12px;
+        }
+
+        /* === DISCLAIMER === */
+        .disclaimer {
+            font-size: 10px;
+            color: #64748b;
+            line-height: 1.5;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        /* === ANIMATIONS === */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes pulseGlow {
+            from { opacity: 0.4; transform: scale(0.97); }
+            to { opacity: 0.8; transform: scale(1.03); }
+        }
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SCATTERED FLOATING QUOTEX & DOLLAR GRAPHICS -->
+    <div class="floating-arena">
+        <!-- Dollar Note 1 -->
+        <div class="floater f-1" style="top: 7%; left: 6%;">
+            <svg width="56" height="32" viewBox="0 0 56 32" fill="none">
+                <rect x="1" y="1" width="54" height="30" rx="5" fill="#062e1e" stroke="#00f5a0" stroke-width="2"/>
+                <circle cx="28" cy="16" r="8" stroke="#00f5a0" stroke-width="1.5"/>
+                <text x="28" y="20" fill="#00f5a0" font-size="12" font-weight="bold" text-anchor="middle">$</text>
+            </svg>
+        </div>
+        <!-- Quotex Badge 1 -->
+        <div class="floater f-2" style="top: 14%; right: 7%;">
+            <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
+                <rect width="46" height="46" rx="12" fill="#180b29" stroke="#ff2a85" stroke-width="2"/>
+                <path d="M15 23L22 14L29 23L22 32L15 23Z" fill="#00f5a0"/>
+                <text x="23" y="27" fill="#ffffff" font-size="11" font-weight="800" text-anchor="middle">QX</text>
+            </svg>
+        </div>
+        <!-- Candlesticks -->
+        <div class="floater f-3" style="top: 48%; left: 4%;">
+            <svg width="44" height="48" viewBox="0 0 44 48" fill="none">
+                <line x1="10" y1="6" x2="10" y2="42" stroke="#ff2a85" stroke-width="2"/>
+                <rect x="6" y="14" width="8" height="18" rx="2" fill="#ff2a85"/>
+                <line x1="28" y1="2" x2="28" y2="38" stroke="#00f5a0" stroke-width="2"/>
+                <rect x="24" y="8" width="8" height="22" rx="2" fill="#00f5a0"/>
+            </svg>
+        </div>
+        <!-- Dollar Coin -->
+        <div class="floater f-4" style="top: 55%; right: 5%;">
+            <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+                <circle cx="21" cy="21" r="19" fill="#1f1605" stroke="#ffb800" stroke-width="2"/>
+                <text x="21" y="27" fill="#ffb800" font-size="18" font-weight="800" text-anchor="middle">$</text>
+            </svg>
+        </div>
+    </div>
+
+    <div class="container">
+        
+        <!-- CIRCLE PROFILE LOGO -->
+        <div class="logo-wrapper">
+            <img src="https://www.image2url.com/r2/default/images/1792751414696-a2f5af8e-1479-46b4-b8de-64972ee70912.jpg" alt="Aliza Trader" class="logo-img">
+        </div>
+
+        <!-- BRANDING -->
+        <h1 class="brand-title">ALIZA TRADER</h1>
+        <div class="brand-badge">● VIP SESSIONS LIVE</div>
+
+        <!-- TOP CTA BUTTON (NATIVE REDIRECT & TRACKING) -->
+        <a id="join-telegram-btn" href="https://t.me/+neinvCAgJUUxNzU9" class="cta-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            Join Telegram Now
+        </a>
+
+        <!-- BENEFIT PERKS -->
+        <div class="perks-box">
+            <div class="perks-header">What You Will Get Inside 👇</div>
+            <ul class="perks-list">
+                <li><span class="bullet-icon">🎯</span> 95%+ Accuracy Daily Signals</li>
+                <li><span class="bullet-icon">🔄</span> Live Loss Recovery Sessions</li>
+                <li><span class="bullet-icon">🤖</span> Exclusive Premium AI Bot Access</li>
+                <li><span class="bullet-icon">💎</span> Lifetime VIP Community Access</li>
+            </ul>
+        </div>
+
+        <!-- MANDATORY DISCLAIMER -->
+        <div class="disclaimer">
+            <p><strong>Disclaimer:</strong> This website is not a part of Facebook or Meta Platforms, Inc. Additionally, this site is NOT endorsed by Meta in any way. FACEBOOK is a trademark of Meta Platforms, Inc.</p>
+            <p style="margin-top: 6px;">Trading financial assets carries substantial risk of capital loss and is not suitable for everyone. All materials provided are for informational and community discussions only.</p>
+        </div>
+
+    </div>
+
+    <!-- TRACKING SCRIPT: EXACT NATIVE EVENT TRACK -->
+    <script>
+        document.getElementById('join-telegram-btn').addEventListener('click', function() {
+            // Fires Subscribe event immediately for Meta Engagement Ad
+            if (typeof fbq === 'function') {
+                fbq('track', 'Subscribe');
+            }
+        });
+    </script>
+
+</body>
+</html>
